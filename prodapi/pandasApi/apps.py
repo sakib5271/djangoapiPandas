@@ -23,6 +23,7 @@ class RetieveData():
 
         elif data == "unique":
             result = tf["Location"].unique()
+            # result.to_frame()
         else:
             result = "Data not found";
         return result

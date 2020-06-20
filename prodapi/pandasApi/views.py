@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .apps import RetieveData
 
 from django.http import JsonResponse
+from django.http import HttpResponse
 # from rest_framework.renderers import JSONRenderer
 # from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
@@ -13,6 +14,11 @@ class DriverClass(APIView):
         if request.method == "GET":
             data = request.GET.get('data')
             result = RetieveData.test(data)
-            
-            result = result.to_json()
+
+            try:
+                result = result.to_json()
+            except:
+                result = str(result)
             return JsonResponse(result, safe=False)
+            # return HttpResponse(result)
+#

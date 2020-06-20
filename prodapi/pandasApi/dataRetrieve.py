@@ -2,9 +2,10 @@ import pandas as pd
 
 # tf = pd.read_csv("testdata.csv")
 class RetieveData():
-    tf = pd.read_csv("testdata.csv")
+
     def test(self,data):
         # result = tf["Location"].value_counts()
+        tf = pd.read_csv("testdata.csv")
         if data == "count":
             result = tf["Location"].value_counts()
 
@@ -15,6 +16,13 @@ class RetieveData():
         return result
 
 
-#test("unique")
+x = RetieveData()
 
-#print(result)
+y=x.test('unique')
+
+print(type(y))
+
+z= pd.Series(y).to_json(orient='values')
+
+print(type(z))
+
